@@ -1,0 +1,17 @@
+node_modules
+dist
+dist-server
+.git
+.github
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+tests
+.tmp-debug
+.dockerignore
+Dockerfile
+docker-compose.yml
+nginx
+README.md

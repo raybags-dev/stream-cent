@@ -1,0 +1,16 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Local runtime caches and logs
+.cache/
+logs/
+
+# Local QA artifacts
+.playwright-mcp/
+dist-server/

@@ -1,0 +1,8 @@
+{
+  "name": "Stream Flix",
+  "description": "Stream Flix - Next-generation movie library & streaming platform with personalized profiles, 4K HDR playback, curated genres, and instant discovery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
