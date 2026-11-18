@@ -1,6 +1,11 @@
 import React, { createContext, useContext, useEffect, useState, useMemo } from 'react';
 import { Plan, Profile, User, WatchProgress } from '../../types';
 import { authApi } from '../api/authClient';
+import {
+  clearBrowseContentScroll,
+  isBrowseContentPath,
+  peekBrowseContentScroll,
+} from '../ui/scrollIntent';
 
 interface AuthContextValue {
   isAuthenticated: boolean;
@@ -126,7 +131,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const navigate = (path: string) => {
     if (typeof window !== 'undefined') {
       window.location.hash = path;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (isBrowseContentPath(path) && peekBrowseContentScroll()) {
+        // BrowsePage will scroll the content rows into view once mounted.
+      } else {
+        if (!isBrowseContentPath(path)) clearBrowseContentScroll();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
     setCurrentPath(path);
   };

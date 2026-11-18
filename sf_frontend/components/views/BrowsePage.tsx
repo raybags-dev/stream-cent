@@ -106,7 +106,10 @@ export const BrowsePage: React.FC<{ filterType?: 'movie' | 'series' | 'new' }> =
       />
 
       {/* Rows Container with generous clearance below hero CTAs */}
-      <div className="relative -mt-8 sm:-mt-12 md:-mt-16 z-20 space-y-4 sm:space-y-6 md:space-y-8">
+      <div
+        id="browse-content"
+        className="relative -mt-8 sm:-mt-12 md:-mt-16 z-20 space-y-4 sm:space-y-6 md:space-y-8 scroll-mt-20 sm:scroll-mt-24"
+      >
         {/* Continue Watching (Personalized) */}
         {continueWatchingTitles.length > 0 && (
           <RowScroller

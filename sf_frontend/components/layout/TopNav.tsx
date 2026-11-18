@@ -3,6 +3,7 @@ import { useAuth } from '../../lib/auth/authContext';
 import { Logo } from '../ui/Logo';
 import { Button } from '../ui/Button';
 import { ANIMATED_AVATARS } from '../../lib/avatars';
+import { requestBrowseContentScroll, scrollToBrowseContent } from '../../lib/ui/scrollIntent';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   Search,
@@ -187,7 +188,11 @@ export const TopNav: React.FC<{
                 return (
                   <button
                     key={item.path}
-                    onClick={() => navigate(item.path)}
+                    onClick={() => {
+                      requestBrowseContentScroll(item.path);
+                      navigate(item.path);
+                      scrollToBrowseContent();
+                    }}
                     className={`transition-colors whitespace-nowrap cursor-pointer ${
                       isActive ? 'text-white font-bold' : 'text-neutral-300 hover:text-white'
                     }`}
@@ -606,7 +611,9 @@ export const TopNav: React.FC<{
                     <button
                       key={item.path}
                       onClick={() => {
+                        requestBrowseContentScroll(item.path);
                         navigate(item.path);
+                        scrollToBrowseContent();
                         setIsMobileMenuOpen(false);
                       }}
                       className={`w-full flex items-center justify-between p-2.5 sm:p-3 rounded-xl transition-all cursor-pointer ${
