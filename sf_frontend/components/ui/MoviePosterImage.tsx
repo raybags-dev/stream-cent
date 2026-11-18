@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Film } from 'lucide-react';
+import { DEFAULT_POSTER_IMAGE } from '../../lib/api/mockData';
 
 interface MoviePosterImageProps {
   src?: string | null;
@@ -25,10 +26,12 @@ export const MoviePosterImage: React.FC<MoviePosterImageProps> = ({
   objectFit = 'cover',
 }) => {
   const [hasError, setHasError] = useState(false);
+  const [fallbackFailed, setFallbackFailed] = useState(false);
 
   // Reset error state if src changes
   useEffect(() => {
     setHasError(false);
+    setFallbackFailed(false);
   }, [src]);
 
   const isValidUrl = Boolean(
@@ -40,7 +43,21 @@ export const MoviePosterImage: React.FC<MoviePosterImageProps> = ({
       !src.includes('undefined')
   );
 
-  if (!isValidUrl || hasError) {
+  // Missing or broken artwork: show the bundled cinematic poster instead of a
+  // blank/dark card so first-time visitors never see a broken layout.
+  if ((!isValidUrl || hasError) && !fallbackFailed) {
+    return (
+      <img
+        src={DEFAULT_POSTER_IMAGE}
+        alt={alt}
+        loading={loading}
+        onError={() => setFallbackFailed(true)}
+        className={`w-full h-full object-${objectFit} ${imgClassName} ${className}`}
+      />
+    );
+  }
+
+  if ((!isValidUrl || hasError) && fallbackFailed) {
     return (
       <div
         className={`relative w-full h-full flex flex-col justify-between p-3.5 bg-gradient-to-b from-[#1c1c24] via-[#121218] to-[#0a0a0e] text-white select-none overflow-hidden border border-white/10 ${className}`}

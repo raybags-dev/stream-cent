@@ -1,9 +1,12 @@
 import { Plan, Profile, Title } from '../../types';
 
-export const HERO_IMAGE_ALIEN_ODYSSEY = '/src/assets/images/hero_alien_odyssey_1793873452424.jpg';
-export const HERO_IMAGE_NEON_SYNDICATE = '/src/assets/images/hero_neon_syndicate_1793873453576.jpg';
-export const HERO_IMAGE_VALORIA = '/src/assets/images/hero_chronicles_valoria_1793873454603.jpg';
-export const HERO_IMAGE_MIDNIGHT_RUN = '/src/assets/images/hero_midnight_run_1793873455251.jpg';
+export const HERO_IMAGE_ALIEN_ODYSSEY = '/assets/images/hero_alien_odyssey_1793873452424.jpg';
+export const HERO_IMAGE_NEON_SYNDICATE = '/assets/images/hero_neon_syndicate_1793873453576.jpg';
+export const HERO_IMAGE_VALORIA = '/assets/images/hero_chronicles_valoria_1793873454603.jpg';
+export const HERO_IMAGE_MIDNIGHT_RUN = '/assets/images/hero_midnight_run_1793873455251.jpg';
+
+// Cinematic fallback artwork used whenever a poster/backdrop is missing or fails to load.
+export const DEFAULT_POSTER_IMAGE = HERO_IMAGE_NEON_SYNDICATE;
 
 export const NO_POSTER_IMAGE_URL = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900"><rect width="600" height="900" fill="%2314141c"/><rect x="30" y="30" width="540" height="840" rx="16" fill="none" stroke="%233a3a4c" stroke-width="3" stroke-dasharray="12 8"/><circle cx="300" cy="380" r="70" fill="%231e1e2c"/><path d="M272 355 L328 355 L328 405 L272 405 Z M262 345 L338 345 L328 330 L272 330 Z" fill="%23e50914"/><text x="300" y="495" fill="%23ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="900" text-anchor="middle" letter-spacing="4">NO POSTER</text><text x="300" y="535" fill="%23888899" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" text-anchor="middle" letter-spacing="2">OFFICIAL ARTWORK PENDING</text><text x="300" y="800" fill="%23e50914" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="800" text-anchor="middle" letter-spacing="3">STREAM FLIX ARCHIVES</text></svg>`;
 

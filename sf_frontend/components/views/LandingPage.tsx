@@ -20,6 +20,7 @@ import {
   HERO_IMAGE_NEON_SYNDICATE,
   HERO_IMAGE_VALORIA,
   HERO_IMAGE_MIDNIGHT_RUN,
+  DEFAULT_POSTER_IMAGE,
 } from '../../lib/api/mockData';
 
 interface FeaturedMovieSlide {
@@ -181,6 +182,12 @@ export const LandingPage: React.FC = () => {
               src={currentSlide.backdropUrl}
               alt={currentSlide.title}
               className="w-full h-full object-cover filter brightness-[0.42] scale-105"
+              onError={(event) => {
+                const img = event.currentTarget;
+                if (img.dataset.fallbackApplied) return;
+                img.dataset.fallbackApplied = 'true';
+                img.src = DEFAULT_POSTER_IMAGE;
+              }}
             />
             {/* Cinematic Scrims */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#0b0b0f] via-[#0b0b0f]/50 to-transparent" />
